@@ -2,7 +2,7 @@ var url = require("url"),
     fs = require("fs"),
     http = require("http"),
     path = require("path");
-var server = http.createServer(function (req, res) {
+http.createServer(function (req, res) {
     // console.log('req.url= ' + req.url);
     var pathname = __dirname + '/dist/' + url.parse(req.url).pathname;
     // console.log('pathname= ' + pathname);
@@ -16,7 +16,7 @@ var server = http.createServer(function (req, res) {
     }
 
     // console.log('__dirname= ' + __dirname);
-    // console.log('pathname= ' + pathname);
+    console.log('pathname= ' + pathname);
     fs.exists(pathname, function (exists) {
         if (exists) {
             switch (path.extname(pathname)) {
@@ -51,8 +51,4 @@ var server = http.createServer(function (req, res) {
             res.end("<h1>404 Not Found</h1>");
         }
     });
-});
-
-server.listen(3000, 'localhost', () => {
-    console.log("Server running at localhost");
-})
+}).listen(3000);
