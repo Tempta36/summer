@@ -43,7 +43,6 @@ http.createServer(function (req, res) {
             }
 
             fs.readFile(pathname, function (err, data) {
-                // console.log(data);
                 res.end(data);
             });
         } else {
