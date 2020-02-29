@@ -13,11 +13,16 @@ export default new Router({
   routes: [
     {
       path: '/',
-      // name: 'HelloWorld',
-      // component: HelloWorld
+      name: 'HelloWorld',
+      component: HelloWorld
     },
     {
       path: '/list',
+      name: 'PersonList',
+      component: PersonList
+    },
+    {
+      path: '/list/:city/:type',
       name: 'PersonList',
       component: PersonList
     },

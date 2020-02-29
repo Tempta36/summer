@@ -5,7 +5,7 @@
         <button type="button" @click="mapType='isolationCity'" :class="{active: mapType === 'isolationCity'}">隔离地</button>
         <button type="button" @click="mapType='holidayCity'" :class="{active: mapType === 'holidayCity'}">假期地</button>
     </div>
-    <s-map :list="formatData" class="map"></s-map>
+    <s-map :list="formatData" :city="city" :mapType="listType" class="map"></s-map>
   </div>
 </template>
 
@@ -23,8 +23,21 @@ export default {
         cityList: [],
         formatData:[],
         alia: 'hello',
-        mapType:'workCity'
+        mapType:'workCity',
+        city: ''
     }
+  },
+  computed:{
+      listType(){
+          let tmp = 0;
+          switch(this.mapType){
+              case 'workCity': tmp = 0;break;
+              case 'isolationCity': tmp = 1;break;
+              case 'holidayCity': tmp = 2;break;
+              default: tmp = 0;
+          }
+          return tmp;
+      }
   },
   created(){
       this.getCityList();
@@ -87,6 +100,9 @@ export default {
   watch:{
       mapType(val){
           this.formatDataFunc();
+      },
+      city(val){
+          console.log(val);
       }
   }
 }

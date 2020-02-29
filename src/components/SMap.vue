@@ -11,7 +11,9 @@ export default {
   props:{
     list: {
         required: true
-    }
+    },
+    city: String,
+    mapType: Number
   },
   data () {
     return {
@@ -21,6 +23,8 @@ export default {
   mounted(){
       // 基于准备好的dom，初始化echarts实例
         this.myChart = echarts.init(document.getElementById('map'));
+        let _this = this;
+   
 
         // 指定图表的配置项和数据
         var option = {
@@ -38,7 +42,7 @@ export default {
                 trigger: 'item',
                 formatter: function(params){
                     return params.name + '<br />' + params.marker + '人数：' + params.value[2] + 
-                    '<button class="more" id="specialLook" type="button" οnclick="console.log(\''+ params.name +'\')">查 看</button>'
+                    '<button class="more" type="button" onmouseup="window.open(window.location.host + \'/list/'+ params.name +'/'+ _this.mapType +'\',\'_blank\')">查 看</button>'
                 },
                 enterable: true,
                 alwaysShowContent:true,
@@ -708,14 +712,6 @@ export default {
 
         // 使用刚指定的配置项和数据显示图表。
         this.myChart.setOption(option);
-        this.myChart.on('click','tooltip', function(){
-            alert('a');
-        });
-
-        // function show(city){
-        //     debugger;
-        //     this.showDetail(city);
-        // }
   },
   methods:{
       renderMap(){
@@ -803,5 +799,10 @@ export default {
 <style>
 .more {
     pointer-events: all;
+    margin-left: 10px;
+    background-color: rgb(222,240,235);
+    border: none;
+    color: #B81820;
+    outline:none;
 }
 </style>
