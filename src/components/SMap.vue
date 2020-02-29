@@ -28,20 +28,24 @@ export default {
             title: {
                 text: '人员分布情况',
                 left: 'center',
+                top:'15',
                 textStyle: {
-                    color: '#fff'
+                    color: '#B81820',
+                    fontSize:22
                 }
             },
             tooltip : {
                 trigger: 'item',
                 formatter: function(params){
                     return params.name + '<br />' + params.marker + '人数：' + params.value[2] + 
-                    '<button class="fr btn closeHandle" id="specialLook"  οnclick="show(\''+ params.name +'\')">查 看</button>'
+                    '<button class="more" id="specialLook" type="button" οnclick="console.log(\''+ params.name +'\')">查 看</button>'
                 },
-                enterable: true
+                enterable: true,
+                alwaysShowContent:true,
+                position:function(point){ return [point[0]+5,point[1]+5];}
             },
             bmap: {
-                center: [108.114129, 37.550339],
+                center: [108.114129, 34.550339],
                 zoom: 5,
                 roam: true,
                 mapStyle: {
@@ -704,6 +708,9 @@ export default {
 
         // 使用刚指定的配置项和数据显示图表。
         this.myChart.setOption(option);
+        this.myChart.on('click','tooltip', function(){
+            alert('a');
+        });
 
         // function show(city){
         //     debugger;
@@ -794,5 +801,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-
+.more {
+    pointer-events: all;
+}
 </style>

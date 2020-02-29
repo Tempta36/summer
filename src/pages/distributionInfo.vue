@@ -1,9 +1,9 @@
 <template>
   <div class="distributionInfo">
     <div class="tab">
-        <button type="button" @click="mapType='workCity'">工作地</button>
-        <button type="button" @click="mapType='isolationCity'">隔离地</button>
-        <button type="button" @click="mapType='holidayCity'">假期地</button>
+        <button type="button" @click="mapType='workCity'" :class="{active: mapType === 'workCity'}">工作地</button>
+        <button type="button" @click="mapType='isolationCity'" :class="{active: mapType === 'isolationCity'}">隔离地</button>
+        <button type="button" @click="mapType='holidayCity'" :class="{active: mapType === 'holidayCity'}">假期地</button>
     </div>
     <s-map :list="formatData" class="map"></s-map>
   </div>
@@ -23,7 +23,7 @@ export default {
         cityList: [],
         formatData:[],
         alia: 'hello',
-        mapType:'isolationCity'
+        mapType:'workCity'
     }
   },
   created(){
@@ -97,7 +97,7 @@ export default {
 .distributionInfo {
     width: 100%;
     height:100%;
-    background-color: rgb(222,240,235);
+    background-color: rgb(227, 230, 229);
 }
 .tab {
     padding-top:30px;
@@ -108,10 +108,16 @@ export default {
     border-radius: 8px;
     border: 3px solid rgb(64,48,32);
     background-color: rgb(222,240,235);
-    color: rgb(248,232,8);
+    color: #B81820;
     font-weight: bold;
     font-size: 20px;
     outline:none;
+}
+.tab button:hover {
+    background-color: rgb(200,232,248);
+}
+.tab button.active {
+    background-color: rgb(248,232,8);
 }
 .map {
     width: 80%;
