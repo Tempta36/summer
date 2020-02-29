@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import NotFound from '@/components/NotFound'
-import PersonList from '@/components/PersonList'
-import DistributionInfo from '@/components/DistributionInfo'
-import Pan from '@/components/Pan'
+import HelloWorld from '@/pages/HelloWorld'
+import NotFound from '@/pages/NotFound'
+import PersonList from '@/pages/PersonList'
+import DistributionInfo from '@/pages/DistributionInfo'
+import Pan from '@/pages/Pan'
 
 Vue.use(Router)
 
