@@ -17,7 +17,7 @@
             <th>已返回工作地</th>
         </thead>
         <tr v-for="(item,index) in dataList" :class="{stripe: index%2 == 1}">
-            <td>{{index}}</td>
+            <td>{{index+1}}</td>
             <td>{{item.name}}</td>
             <td>{{item.phoneNum}}</td>
             <td v-if="routeParams.type == '1' || !isQuery">{{item.isolationProvince}}</td>
